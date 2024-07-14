@@ -3,6 +3,13 @@
 
 }
 
+.lock-screen {
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+    position: fixed;
+}
+
 body{
     margin:0;
     /* background:rgb(17, 17, 17); */
