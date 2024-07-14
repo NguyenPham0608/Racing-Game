@@ -36,12 +36,11 @@ class rightSensor{
 window.addEventListener('touchstart',function(){
     mouseDown=true
 })
-
 window.addEventListener('touchend',function(){
     mouseDown=false
 })
-
 window.addEventListener('touchmove',function(e){
     mouseX=e.x
     mouseY=e.y
 })
+
