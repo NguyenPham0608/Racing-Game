@@ -40,14 +40,18 @@ window.addEventListener('touchstart',function(){
 window.addEventListener('touchend',function(){
     mouseDown=false
 })
-window.addEventListener('touchmove',function(e){
-    // e.preventDefault()
+window.addEventListener('touchmove',handletouch)
+
+function handletouch(){
+    // Prevent default behavior (optional)
+    e.preventDefault();
+
+    // Get the first touch point
     const touch = e.touches[0];
-    // mouseX=e.clientX
-    // mouseY=e.clientY
-    // mouseX=touch.clientX
-    // mouseY=touch.clientY
-    mouseX=touch.x
-    mouseY=touch.y
-})
+
+    // Get the current X and Y coordinates
+    mouseX = touch.clientX;
+    mouseY = touch.clientY;
+
+}
 
