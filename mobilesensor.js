@@ -40,7 +40,7 @@ window.addEventListener('touchstart',function(e){
     mouseDown=true
 
 })
-window.addEventListener('touchend',function(){
+window.addEventListener('touchend',function(e){
     mouseDown=false
     this.changeX=0
     this.changeY=0
