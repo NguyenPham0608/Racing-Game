@@ -25,30 +25,31 @@ class rightSensor{
             this.changeX=mouseX-startmouseX
             this.changeY=-(mouseY-startmouseY)
 
-        }else{
-            this.changeX=0
-            this.changeY=0
-            mouseDownTime=0
         }
         console.log(this.changeX)
     }
 }
 
 window.addEventListener('touchstart',function(){
-    mouseDown=true
 
     const touch2 = e.touches[0];
 
     // Get the current X and Y coordinates
     startmouseX = touch2.clientX;
     startmouseY = touch2.clientY;
+    mouseDown=true
+
 })
 window.addEventListener('touchend',function(){
     mouseDown=false
+    this.changeX=0
+    this.changeY=0
+    mouseDownTime=0
 })
 window.addEventListener('touchmove',handletouch)
 
 function handletouch(){
+    mouseDown=true
     // Prevent default behavior (optional)
     e.preventDefault();
 
