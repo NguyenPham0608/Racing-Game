@@ -48,10 +48,7 @@ window.addEventListener('touchend',function(e){
     startmouseY = 0;
     mouseDownTime=0
 })
-window.addEventListener('touchmove',handletouch)
-
-function handletouch(e){
-    // Prevent default behavior (optional)
+window.addEventListener('touchmove',function(e){
     e.preventDefault()
     e.stopPropagation()
 
@@ -63,6 +60,7 @@ function handletouch(e){
     // Get the current X and Y coordinates
     mouseX = touch.clientX;
     mouseY = touch.clientY;
+}, { passive: false })
 
-}
+
 
