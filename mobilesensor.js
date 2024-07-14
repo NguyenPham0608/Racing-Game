@@ -44,11 +44,13 @@ window.addEventListener('touchend',function(){
     mouseDown=false
     this.changeX=0
     this.changeY=0
+    startmouseX = 0;
+    startmouseY = 0;
     mouseDownTime=0
 })
 window.addEventListener('touchmove',handletouch)
 
-function handletouch(){
+function handletouch(e){
     mouseDown=true
     // Prevent default behavior (optional)
     e.preventDefault();
