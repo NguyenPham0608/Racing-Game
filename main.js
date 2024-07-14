@@ -130,10 +130,10 @@ function animate(time){
     carCtx.fillStyle='#444444'
     carCtx.fillRect(0,carCanvas.height,carCanvas.width,-50)
 
-    if(mouseDown){
-        carCtx.fillStyle='red'
-        carCtx.fillRect(0,0,999,999)
-    }
+    // if(mouseDown){
+    //     carCtx.fillStyle='red'
+    //     carCtx.fillRect(0,0,999,999)
+    // }
     requestAnimationFrame(animate);
 }
 
