@@ -1,5 +1,5 @@
 const carCanvas=document.getElementById("carCanvas");
-carCanvas.width=400;
+carCanvas.width=500;
 
 
 
@@ -54,7 +54,7 @@ const traffic=[]
 // ]
 
 for(let i =0;i<220*laneArray.length;i+=220){
-    traffic.push(new Car(road.getLaneCenter(laneArray[i/220]),-i,40,60,"DUMMY",2))
+    traffic.push(new Car(road.getLaneCenter(laneArray[i/220]),-i,60,90,"DUMMY",2))
 }
 
 
@@ -79,7 +79,7 @@ function discard(){
 function generateCars(N){
     const cars=[];
     for(let i=1;i<=N;i++){
-        cars.push(new Car(road.getLaneCenter(1),100,40,60,CARTYPE,9,"#00FF00"));
+        cars.push(new Car(road.getLaneCenter(1),100,60,90,CARTYPE,9,"#00FF00"));
     }
     return cars;
 }
