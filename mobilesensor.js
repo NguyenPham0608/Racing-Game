@@ -51,9 +51,10 @@ window.addEventListener('touchend',function(e){
 window.addEventListener('touchmove',handletouch)
 
 function handletouch(e){
-    mouseDown=true
     // Prevent default behavior (optional)
     e.preventDefault();
+
+    mouseDown=true
 
     // Get the first touch point
     const touch = e.touches[0];
