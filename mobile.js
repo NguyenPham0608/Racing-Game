@@ -4,7 +4,7 @@ class MobileControls{
         this.right=false
         this.up=false
         this.down=false
-        this.turnAcel=0
+        this.turnAcel=0.03
         this.rightSensor=new rightSensor(10,10)
     }
     update(){
@@ -29,7 +29,7 @@ class MobileControls{
         }else{
             this.down=false
         }
-        this.turnAcel=(this.rightSensor.changeX/60)/100
-        this.turnAcel=Math.abs(this.turnAcel)
+        // this.turnAcel=(this.rightSensor.changeX/60)/100
+        // this.turnAcel=Math.abs(this.turnAcel)
     }
 }
