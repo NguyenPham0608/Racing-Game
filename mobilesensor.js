@@ -29,6 +29,7 @@ class rightSensor{
             this.changeY=0
             mouseDownTime=0
         }
+        console.log(this.changeX)
     }
 }
 

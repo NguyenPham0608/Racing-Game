@@ -5,6 +5,7 @@ class Controls{
         this.right=false;
         this.reverse=false;
         this.isMobile=mobile
+        this.turnAcel=0
 
         if(mobile){
             console.log(type)
@@ -32,6 +33,7 @@ class Controls{
             this.right=this.mobile.right
             this.forward=this.mobile.up
             this.reverse=this.mobile.down
+            this.turnAcel=this.mobile.turnAcel
         }
 
     }

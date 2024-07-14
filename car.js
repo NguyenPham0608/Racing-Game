@@ -13,6 +13,7 @@ class Car{
         this.angle=0;
         this.damaged=false;
         this.exploded=0
+        this.turnAcel=0.03
 
         this.useBrain=this.controlType=="AI";
 
@@ -111,6 +112,7 @@ class Car{
     }
 
     #move(){
+        this.turnAcel=this.controls.turnAcel
         if(this.controls.forward){
             this.speed+=this.acceleration;
         }
@@ -138,10 +140,10 @@ class Car{
         if(this.speed!=0){
             const flip=this.speed>0?1:-1;
             if(this.controls.left){
-                this.angle+=0.03*flip;
+                this.angle+=this.turnAcel*flip;
             }
             if(this.controls.right){
-                this.angle-=0.03*flip;
+                this.angle-=this.turnAcel*flip;
             }
         }
 
