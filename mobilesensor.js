@@ -17,10 +17,10 @@ class rightSensor{
 
     update(){
         if(mouseDown){
-            if(mouseDownTime<1){
-                startmouseX=mouseX
-                startmouseY=mouseY
-            }
+            // if(mouseDownTime<1){
+            //     startmouseX=mouseX
+            //     startmouseY=mouseY
+            // }
             mouseDownTime++
             this.changeX=mouseX-startmouseX
             this.changeY=-(mouseY-startmouseY)
