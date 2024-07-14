@@ -90,10 +90,9 @@ class Car{
 
     #createPolygon(){
         const points=[];
-        // const rad=Math.hypot(this.width/1.1,this.height/1.1)/2;
-        // const alpha=Math.atan2(this.width/1.1,this.height/1.1);
-        const rad=Math.hypot(0,0)/2;
-        const alpha=Math.atan2(0,0);
+        const rad=Math.hypot(this.width/1.7,this.height/1.7)/2;
+        const alpha=Math.atan2(this.width/1.7,this.height/1.7);
+
         points.push({
             x:this.x-Math.sin(this.angle-alpha)*rad,
             y:this.y-Math.cos(this.angle-alpha)*rad
