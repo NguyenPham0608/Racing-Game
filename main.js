@@ -53,8 +53,8 @@ const traffic=[]
 //     new Car(road.getLaneCenter(2),-700,40,60,"DUMMY",2),
 // ]
 
-for(let i =0;i<220*laneArray.length;i+=220){
-    traffic.push(new Car(road.getLaneCenter(laneArray[i/220]),-i,60,90,"DUMMY",2))
+for(let i =0;i<280*laneArray.length;i+=280){
+    traffic.push(new Car(road.getLaneCenter(laneArray[i/280]),-i,60,90,"DUMMY",2))
 }
 
 
