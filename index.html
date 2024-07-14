@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<head>
+    <title>Self-driving car - No libraries</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="score">
+        <b><p>Score: <span id="scorecounter">0</span></p></b>
+    </div>
+
+    <canvas id="carCanvas"></canvas>
+    <div id="verticalButtons">
+        <!-- <button onclick="save()" id="save">💾</button>
+        <button onclick="discard()" id="discard">🗑️</button> -->
+        <button onclick="window.location.reload()" id="reload"><b>↻</b></button>
+        <!-- <button onclick="changeCarType('AI')" id="AI">🤖</button>
+        <button onclick="changeCarType('KEYS')" id="KEYS">✋</button> -->
+    </div>
+
+
+
+    <canvas id="networkCanvas"></canvas>
+    <script src="mobilesensor.js"></script>
+    <script src="mobile.js"></script>
+    <script src="sparkle.js"></script>
+    <script src="particles.js"></script>
+    <script src="visualizer.js"></script>
+    <script src="network.js"></script>
+    <script src="sensor.js"></script>
+    <script src="utils.js"></script>
+    <script src="road.js"></script>
+    <script src="controls.js"></script>
+    <script src="car.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

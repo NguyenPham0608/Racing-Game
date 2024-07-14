@@ -1,0 +1,55 @@
+*{
+    user-select: none;
+}
+
+body{
+    margin:0;
+    /* background:rgb(17, 17, 17); */
+    background-image: url("Space.png");
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    /* align-items:center; */
+}
+
+
+#verticalButtons{
+    display:flex;
+    flex-direction:column;
+}
+
+button{
+    border: none;
+    border-radius: 5px;
+    padding: 30px 30px 15px 30px;
+    margin: 5px;
+    cursor:pointer;
+    font-size: 400%;
+}
+
+
+button:hover{
+    background:blue;
+}
+
+#networkCanvas{
+    background:rgba(226, 226, 226, 0);
+}
+#carCanvas{
+
+    /* background:rgb(5, 130, 255); */
+    border: 3px solid gray;
+    background: linear-gradient(90deg, rgba(0,68,212,1) 0%, rgba(0,159,255,1) 46%, rgba(78,69,252,1) 100%);
+
+}
+
+#score{
+    color: white;
+    position: absolute;
+    top: 98%;
+    left: 47%;
+    transform: translate(-50%,-50%);
+    font-family: sans-serif;
+    font-size: 30px;
+    font-style: italic;
+}
