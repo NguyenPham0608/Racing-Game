@@ -45,7 +45,9 @@ window.addEventListener('touchmove',function(e){
     const touch = e.touches[0];
     // mouseX=e.clientX
     // mouseY=e.clientY
-    mouseX=touch.clientX
-    mouseY=touch.clientY
+    // mouseX=touch.clientX
+    // mouseY=touch.clientY
+    mouseX=touch.x
+    mouseY=touch.y
 })
 
