@@ -30,7 +30,7 @@ class rightSensor{
     }
 }
 
-window.addEventListener('touchstart',function(){
+window.addEventListener('touchstart',function(e){
 
     const touch2 = e.touches[0];
 
