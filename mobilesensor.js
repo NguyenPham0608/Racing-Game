@@ -59,8 +59,8 @@ function handletouch(e){
     const touch = e.touches[0];
 
     // Get the current X and Y coordinates
-    mouseX = touch.x;
-    mouseY = touch.x;
+    mouseX = touch.clientX;
+    mouseY = touch.clientY;
 
 }
 

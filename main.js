@@ -132,7 +132,7 @@ function animate(time){
 
     if(mouseDown){
         carCtx.fillStyle='red'
-        carCtx.fillRect(mouseX,mouseY,999,999)
+        carCtx.fillRect(0,0,999,999)
     }
     requestAnimationFrame(animate);
 }
