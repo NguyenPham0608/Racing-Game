@@ -89,6 +89,7 @@ function generateCars(N){
 function animate(time){
 
     if(mouseDown){
+        carCtx.fillStyle='red'
         carCtx.fillRect(0,0,999,999)
     }
     output.innerHTML = Math.abs(Math.floor((score-100)));
