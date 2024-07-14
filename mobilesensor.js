@@ -52,7 +52,8 @@ window.addEventListener('touchmove',handletouch)
 
 function handletouch(e){
     // Prevent default behavior (optional)
-    e.preventDefault();
+    e.preventDefault()
+    e.stopPropagation()
 
     mouseDown=true
 

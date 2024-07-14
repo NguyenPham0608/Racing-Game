@@ -9,22 +9,22 @@ class MobileControls{
     }
     update(){
         this.rightSensor.update()
-        if(this.rightSensor.changeX>30){
+        if(this.rightSensor.changeX>20){
             this.right=true
         }else{
             this.right=false
         }
-        if(this.rightSensor.changeX<-30){
+        if(this.rightSensor.changeX<-20){
             this.left=true
         }else{
             this.left=false
         }
-        if(this.rightSensor.changeY>30){
+        if(this.rightSensor.changeY>20){
             this.up=true
         }else{
             this.up=false
         }
-        if(this.rightSensor.changeY<-30){
+        if(this.rightSensor.changeY<-20){
             this.down=true
         }else{
             this.down=false
