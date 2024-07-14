@@ -41,7 +41,7 @@ window.addEventListener('touchend',function(){
     mouseDown=false
 })
 window.addEventListener('touchmove',function(e){
-    e.preventDefault()
+    // e.preventDefault()
     const touch = e.touches[0];
     // mouseX=e.clientX
     // mouseY=e.clientY
