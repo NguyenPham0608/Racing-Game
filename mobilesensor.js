@@ -33,15 +33,15 @@ class rightSensor{
     }
 }
 
-window.addEventListener('mousedown',function(){
+window.addEventListener('touchstart',function(){
     mouseDown=true
 })
 
-window.addEventListener('mouseup',function(){
+window.addEventListener('touchend',function(){
     mouseDown=false
 })
 
-window.addEventListener('mousemove',function(e){
+window.addEventListener('touchmove',function(e){
     mouseX=e.x
     mouseY=e.y
 })
