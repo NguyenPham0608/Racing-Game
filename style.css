@@ -1,17 +1,18 @@
 *{
     user-select: none;
+    overflow:hidden;
+
 }
 
 body{
     margin:0;
     /* background:rgb(17, 17, 17); */
     background-image: url("Space.png");
-    overflow:hidden;
     display:flex;
     justify-content:center;
     height: 100vh;
     /* align-items:center; */
-    touch-action: none;
+    /* touch-action: none; */
 }
 
 
