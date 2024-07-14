@@ -37,11 +37,11 @@ class rightSensor{
 window.addEventListener('touchstart',function(){
     mouseDown=true
 
-    const touch = e.touches[0];
+    const touch2 = e.touches[0];
 
     // Get the current X and Y coordinates
-    startmouseX = touch.clientX;
-    startmouseY = touch.clientY;
+    startmouseX = touch2.clientX;
+    startmouseY = touch2.clientY;
 })
 window.addEventListener('touchend',function(){
     mouseDown=false
