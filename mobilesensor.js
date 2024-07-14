@@ -25,6 +25,13 @@ class rightSensor{
             this.changeX=mouseX-startmouseX
             this.changeY=-(mouseY-startmouseY)
 
+        }else{
+            mouseDown=false
+            this.changeX=0
+            this.changeY=0
+            startmouseX = 0;
+            startmouseY = 0;
+            mouseDownTime=0
         }
         console.log(this.changeX)
     }
