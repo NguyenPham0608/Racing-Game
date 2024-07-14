@@ -5,6 +5,7 @@ let startmouseX=0
 let startmouseY=0
 let mouseDownTime=0
 
+
 class rightSensor{
     constructor(width,height){
         this.width=width
@@ -40,7 +41,10 @@ window.addEventListener('touchend',function(){
     mouseDown=false
 })
 window.addEventListener('touchmove',function(e){
-    mouseX=e.x
-    mouseY=e.y
+    const touch = e.touches[0];
+    // mouseX=e.clientX
+    // mouseY=e.clientY
+    mouseX=touch.clientX
+    mouseY=touch.clientY
 })
 
