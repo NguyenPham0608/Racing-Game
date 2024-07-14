@@ -4,17 +4,17 @@ class MobileControls{
         this.right=false
         this.up=false
         this.down=false
-        this.turnAcel=0.05
+        this.turnAcel=0.04
         this.rightSensor=new rightSensor(10,10)
     }
     update(){
         this.rightSensor.update()
-        if(this.rightSensor.changeX>5){
+        if(this.rightSensor.changeX>9){
             this.right=true
         }else{
             this.right=false
         }
-        if(this.rightSensor.changeX<-5){
+        if(this.rightSensor.changeX<-9){
             this.left=true
         }else{
             this.left=false
