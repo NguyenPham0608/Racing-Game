@@ -9,12 +9,12 @@ class MobileControls{
     }
     update(){
         this.rightSensor.update()
-        if(this.rightSensor.changeX>9){
+        if(this.rightSensor.changeX>15){
             this.right=true
         }else{
             this.right=false
         }
-        if(this.rightSensor.changeX<-9){
+        if(this.rightSensor.changeX<-15){
             this.left=true
         }else{
             this.left=false
