@@ -29,7 +29,7 @@ class MobileControls{
         }else{
             this.down=false
         }
-        // this.turnAcel=(this.rightSensor.changeX/60)/100
-        // this.turnAcel=Math.abs(this.turnAcel)
+        this.turnAcel=(this.rightSensor.changeX/60)/100
+        this.turnAcel=Math.abs(this.turnAcel)
     }
 }
