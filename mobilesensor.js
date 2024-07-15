@@ -44,6 +44,8 @@ window.addEventListener('touchstart',function(e){
     // Get the current X and Y coordinates
     startmouseX = touch2.clientX;
     startmouseY = touch2.clientY;
+    mouseX = startmouseX;
+    mouseY = startmouseY;
 
     mouseDown=true
 
@@ -55,6 +57,7 @@ window.addEventListener('touchend',function(e){
     this.changeY=0
     startmouseX = 0;
     startmouseY = 0;
+    
     mouseDownTime=0
 })
 window.addEventListener('touchmove',function(e){
