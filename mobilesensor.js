@@ -45,6 +45,9 @@ window.addEventListener('touchstart',function(e){
     startmouseX = touch2.clientX;
     startmouseY = touch2.clientY;
 
+    mouseDown=true
+
+
 })
 window.addEventListener('touchend',function(e){
     mouseDown=false
@@ -66,7 +69,6 @@ window.addEventListener('touchmove',function(e){
     mouseX = touch.clientX;
     mouseY = touch.clientY;
 
-    mouseDown=true
 
 }, { passive: false })
 
