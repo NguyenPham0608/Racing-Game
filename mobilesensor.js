@@ -1,8 +1,8 @@
 let mouseDown=false
 let mouseX=0
 let mouseY=0
-let startmouseX=0
-let startmouseY=0
+let startmouseX
+let startmouseY
 let mouseDownTime=0
 
 
@@ -44,7 +44,6 @@ window.addEventListener('touchstart',function(e){
     // Get the current X and Y coordinates
     startmouseX = touch2.clientX;
     startmouseY = touch2.clientY;
-    mouseDown=true
 
 })
 window.addEventListener('touchend',function(e){
@@ -59,7 +58,6 @@ window.addEventListener('touchmove',function(e){
     e.preventDefault()
     e.stopPropagation()
 
-    mouseDown=true
 
     // Get the first touch point
     const touch = e.touches[0];
@@ -67,6 +65,9 @@ window.addEventListener('touchmove',function(e){
     // Get the current X and Y coordinates
     mouseX = touch.clientX;
     mouseY = touch.clientY;
+
+    mouseDown=true
+
 }, { passive: false })
 
 
