@@ -7,7 +7,7 @@ class Sparkle{
         this.sine=Math.sin(this.frame/60)
         this.random=getRandomArbitrary(-2,2)
         this.img=new Image()
-        this.img.src='sparkle2.png'
+        this.img.src='Images/sparkle2.png'
     }
     draw(ctx){
         ctx.save()

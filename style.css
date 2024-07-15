@@ -8,7 +8,7 @@
 body{
     margin:0;
     /* background:rgb(17, 17, 17); */
-    background-image: url("Space.png");
+    background-image: url("Images/Space.png");
     display:flex;
     overflow:hidden;
 

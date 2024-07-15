@@ -31,7 +31,7 @@ class Car{
         this.particlesArray=[]
 
         this.img=new Image();
-        this.img.src="car.png"
+        this.img.src="Images/car.png"
 
         this.mask=document.createElement("canvas");
         this.mask.width=width;
