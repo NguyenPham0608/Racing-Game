@@ -8,7 +8,6 @@ class Controls{
         this.turnAcel=0
 
         if(mobile){
-            console.log(type)
             if(type=="KEYS"){
                 this.mobile=new MobileControls();
             }

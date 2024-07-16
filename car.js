@@ -1,5 +1,5 @@
 class Car{
-    constructor(x,y,width,height,controlType,maxSpeed=3,color=getRandomColor()){
+    constructor(x,y,width,height,controlType,maxSpeed=3,mobile,color=getRandomColor()){
         this.x=x;
         this.y=y;
         this.width=width;
@@ -14,6 +14,7 @@ class Car{
         this.damaged=false;
         this.exploded=0
         this.turnAcel=0.03
+        this.isMobile=mobile
 
         this.useBrain=this.controlType=="AI";
 
@@ -23,8 +24,9 @@ class Car{
                 [this.sensor.rayCount,6,4]
             );
         }
+        console.log(this.isMobile)
         if(this.controlType!="DUMMY"){
-            this.controls=new Controls(controlType,isMobile);
+            this.controls=new Controls(controlType,this.isMobile);
         }else{
             this.controls=new Controls(controlType,false);
         }

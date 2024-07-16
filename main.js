@@ -18,7 +18,7 @@ const networkCtx = networkCanvas.getContext("2d");
 const road=new Road(carCanvas.width/2,carCanvas.width*0.9);
 let bam=new Audio()
 bam.src="explosion.wav"
-let isMobile
+let isMobile=null
 
 let waitingForsetup=true
 
@@ -43,34 +43,28 @@ var button1 = document.getElementById("PC");
 var button2 = document.getElementById("MOBILE");
 
 const N=1;
-const cars=generateCars(N);
-let bestCar=cars[0];
 const traffic=[]
 
-if(localStorage.getItem("bestBrain")){
-    for(let i=0;i<cars.length;i++){
-        cars[i].brain=JSON.parse(
-            localStorage.getItem("bestBrain"));
-        if(i!=0){
-            NeuralNetwork.mutate(cars[i].brain,0.1);
-        }
-    }
-}
-
-
-
-
-for(let i =0;i<280*laneArray.length;i+=280){
-    traffic.push(new Car(road.getLaneCenter(laneArray[i/280]),-i,60,90,"DUMMY",2))
-}
-
+let cars
 function generateCars(N){
-    const cars=[];
+    cars=[];
     for(let i=1;i<=N;i++){
-        cars.push(new Car(road.getLaneCenter(1),100,60,90,CARTYPE,9,"#00FF00"));
+        cars.push(new Car(road.getLaneCenter(1),100,60,90,CARTYPE,9,isMobile,"#00FF00"));
     }
     return cars;
 }
+
+function setup(){
+    cars=generateCars(N);
+    for(let i =0;i<280*laneArray.length;i+=280){
+        traffic.push(new Car(road.getLaneCenter(laneArray[i/280]),-i,60,90,"DUMMY",2))
+    }
+}
+
+
+
+
+
 
 
 animate();
@@ -162,20 +156,28 @@ function say(text,x,y,size,time){
     carCtx.font=`bold ${size}px Arial`
     carCtx.textAlign='center'
     carCtx.fillText(text,x,yText+y-textSy**2,999)
-    if(isMobile){
+    if(isMobile==true||isMobile==false){
         textSy--
     }
     if(textSy**2>600){
+        setup()
+
         stage='game'
         button2.parentNode.removeChild(button2);
         button1.parentNode.removeChild(button1);
     }
-    console.log(isMobile)
 }
 
 function setDevice(mobile){
-    isMobile=mobile
+    if (mobile=='false') {
+        isMobile=false 
+    } else {
+        isMobile=true 
+        
+    }
     // stage='game'
+
+
 }
 
 window.addEventListener('keydown',function(e){
