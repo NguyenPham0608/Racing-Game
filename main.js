@@ -1,7 +1,7 @@
+/**@type{HTMLCanvasElement} */
+
 const carCanvas=document.getElementById("carCanvas");
 carCanvas.width=500;
-
-
 
 const networkCanvas=document.getElementById("networkCanvas");
 networkCanvas.width=1;
@@ -9,17 +9,29 @@ let score=0
 var output = document.getElementById("scorecounter");
 output.innerHTML = score;
 
+const mobile=false
+let frame=0
+
 const carCtx = carCanvas.getContext("2d");
 const networkCtx = networkCanvas.getContext("2d");
 
 const road=new Road(carCanvas.width/2,carCanvas.width*0.9);
 let bam=new Audio()
 bam.src="explosion.wav"
+let isMobile
+
+let waitingForsetup=true
 
 const particlesList=[]
+let mobilePicture=new Image()
+mobilePicture.src='Images/MOBILE.png'
+let pcPicture=new Image()
+pcPicture.src='Images/PC.png'
+let textSy=0
 
 let CARTYPE="KEYS"
 
+let stage='intro'
 
 let randomLane=0
 let laneArray=[
@@ -27,9 +39,14 @@ let laneArray=[
     0,2,1,2,0,1,2,0,0,2,1,0,2,1,0,2,1,2,0,1,2,0,0,2,1,0,2,1,0,0,1,2,2,0,0,0,1,2,0,1,2,2,1,0
 ]
 
+var button1 = document.getElementById("PC");
+var button2 = document.getElementById("MOBILE");
+
 const N=1;
 const cars=generateCars(N);
 let bestCar=cars[0];
+const traffic=[]
+
 if(localStorage.getItem("bestBrain")){
     for(let i=0;i<cars.length;i++){
         cars[i].brain=JSON.parse(
@@ -41,24 +58,23 @@ if(localStorage.getItem("bestBrain")){
 }
 
 
-const traffic=[]
 
-// const traffic=[
-//     new Car(road.getLaneCenter(1),-100,40,60,"DUMMY",2),
-//     new Car(road.getLaneCenter(0),-300,40,60,"DUMMY",2),
-//     new Car(road.getLaneCenter(2),-300,40,60,"DUMMY",2),
-//     new Car(road.getLaneCenter(0),-500,40,60,"DUMMY",2),
-//     new Car(road.getLaneCenter(1),-500,40,60,"DUMMY",2),
-//     new Car(road.getLaneCenter(1),-700,40,60,"DUMMY",2),
-//     new Car(road.getLaneCenter(2),-700,40,60,"DUMMY",2),
-// ]
 
 for(let i =0;i<280*laneArray.length;i+=280){
     traffic.push(new Car(road.getLaneCenter(laneArray[i/280]),-i,60,90,"DUMMY",2))
 }
 
+function generateCars(N){
+    const cars=[];
+    for(let i=1;i<=N;i++){
+        cars.push(new Car(road.getLaneCenter(1),100,60,90,CARTYPE,9,"#00FF00"));
+    }
+    return cars;
+}
+
 
 animate();
+
 
 
 function changeCarType(type){
@@ -76,65 +92,90 @@ function discard(){
     localStorage.removeItem("bestBrain");
 }
 
-function generateCars(N){
-    const cars=[];
-    for(let i=1;i<=N;i++){
-        cars.push(new Car(road.getLaneCenter(1),100,60,90,CARTYPE,9,"#00FF00"));
-    }
-    return cars;
-}
+
 
 
 
 function animate(time){
 
-
-    output.innerHTML = Math.abs(Math.floor((score-100)));
-    
+    frame++
     carCanvas.height=(window.innerHeight);
     networkCanvas.height=window.innerHeight;
 
+    output.innerHTML = Math.abs(Math.floor((score-100)));
+    
+    if(stage=='game'){
+        for(let i=0;i<traffic.length;i++){
+            traffic[i].update(road.borders,[]);
+        }
+        for(let i=0;i<cars.length;i++){
+            cars[i].update(road.borders,traffic);
+        }
+        bestCar=cars.find(
+            c=>c.y==Math.min(
+                ...cars.map(c=>c.y)
+            ));
+    
+    
+        carCtx.save();
+        carCtx.translate(0,-bestCar.y+carCanvas.height*0.7);
+    
+        road.draw(carCtx);
+        for(let i=0;i<traffic.length;i++){
+            traffic[i].draw(carCtx);
+        }
+        carCtx.globalAlpha=0.2;
+        for(let i=0;i<cars.length;i++){
+            cars[i].draw(carCtx);
+        }
+        carCtx.globalAlpha=1;
+        bestCar.draw(carCtx,true);
+        score=bestCar.y
+    
+        carCtx.restore();
+    
+        networkCtx.lineDashOffset=-time/50;
+        // Visualizer.drawNetwork(networkCtx,bestCar.brain);
+    
+    }else{
+        carCtx.fillStyle='lightgray'
+        carCtx.fillRect(0,0,carCanvas.width,carCanvas.height)
+        // carCtx.drawImage(pcPicture,40,carCanvas.height/2)
+        // carCtx.drawImage(mobilePicture,carCanvas.width-200,carCanvas.height/2)
+        say('What device are you on?', carCanvas.width/2,carCanvas.height/3,30,frame/20)
 
-    for(let i=0;i<traffic.length;i++){
-        traffic[i].update(road.borders,[]);
+
+
     }
-    for(let i=0;i<cars.length;i++){
-        cars[i].update(road.borders,traffic);
-    }
-    bestCar=cars.find(
-        c=>c.y==Math.min(
-            ...cars.map(c=>c.y)
-        ));
-
-
-    carCtx.save();
-    carCtx.translate(0,-bestCar.y+carCanvas.height*0.7);
-
-    road.draw(carCtx);
-    for(let i=0;i<traffic.length;i++){
-        traffic[i].draw(carCtx);
-    }
-    carCtx.globalAlpha=0.2;
-    for(let i=0;i<cars.length;i++){
-        cars[i].draw(carCtx);
-    }
-    carCtx.globalAlpha=1;
-    bestCar.draw(carCtx,true);
-    score=bestCar.y
-
-    carCtx.restore();
-
-    networkCtx.lineDashOffset=-time/50;
-    // Visualizer.drawNetwork(networkCtx,bestCar.brain);
-
     carCtx.fillStyle='#444444'
     carCtx.fillRect(0,carCanvas.height,carCanvas.width,-50)
 
-    // if(mouseDown){
-    //     carCtx.fillStyle='red'
-    //     carCtx.fillRect(0,0,999,999)
-    // }
+
     requestAnimationFrame(animate);
+}
+
+function say(text,x,y,size,time){
+    const yText=(Math.sin(time)*30)
+
+    carCtx.fillStyle='black'
+
+    carCtx.font=`bold ${size}px Arial`
+    carCtx.textAlign='center'
+    carCtx.fillText(text,x,yText+y-textSy**2,999)
+    if(isMobile){
+        textSy--
+    }
+    if(textSy**2>600){
+        stage='game'
+        button2.parentNode.removeChild(button2);
+        button1.parentNode.removeChild(button1);
+    }
+    console.log(isMobile)
+}
+
+function setDevice(mobile){
+    isMobile=mobile
+    // stage='game'
 }
 
 window.addEventListener('keydown',function(e){

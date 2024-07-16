@@ -24,7 +24,7 @@ class Car{
             );
         }
         if(this.controlType!="DUMMY"){
-            this.controls=new Controls(controlType,true);
+            this.controls=new Controls(controlType,isMobile);
         }else{
             this.controls=new Controls(controlType,false);
         }
@@ -113,7 +113,11 @@ class Car{
     }
 
     #move(){
-        this.turnAcel=this.controls.turnAcel
+        if(mobile){
+            this.turnAcel=this.controls.turnAcel
+        }else{
+            this.turnAcel=0.03
+        }
         if(this.controls.forward){
             this.speed+=this.acceleration;
         }
