@@ -1,4 +1,4 @@
-class Car{
+    class Car{
     constructor(x,y,width,height,controlType,maxSpeed=3,mobile,color=getRandomColor()){
         this.x=x;
         this.y=y;
