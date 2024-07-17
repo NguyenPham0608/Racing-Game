@@ -86,8 +86,20 @@ function discard(){
     localStorage.removeItem("bestBrain");
 }
 
+function removeAllFromArray(array){
+    array.splice(0,array.length)
+}
 
+function splice(array,start,end){
+    array.splice(start,end)
+}
 
+function restartGame(){
+    removeAllFromArray(traffic)
+    racecar.x=getLaneCenter(1)
+    racecar.y=100
+    racecar.damaged=false
+}
 
 
 function animate(time){
