@@ -202,7 +202,24 @@
             if(this.exploded<1){
                 bam.play()
             }
+            if(this.exploded>250){
+                restart=true
+                
+            }
             this.exploded++
+            if(restart){
+                if(this.controlType=="KEYS"){
+                    removeAllFromArray(traffic)
+                    this.y=100
+                    this.x=centerLane
+                    this.damaged=false
+                    reloadCars=true
+                    this.speed=0
+                    this.angle=0
+                    this.exploded=0
+                    restart=false
+                }
+            }
         }
 
 

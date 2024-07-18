@@ -12,10 +12,20 @@ output.innerHTML = score;
 const mobile=false
 let frame=0
 
+
+
+let restart=false
+let reloadCars=false
+
 const carCtx = carCanvas.getContext("2d");
 const networkCtx = networkCanvas.getContext("2d");
 
-const road=new Road(carCanvas.width/2,carCanvas.width*0.9);
+
+let laneCount=7
+const road=new Road(carCanvas.width/2,carCanvas.width*0.9,laneCount);
+let centerLane=road.getLaneCenter(Math.ceil((laneCount-1)/2))
+
+
 let bam=new Audio()
 bam.src="explosion.wav"
 let isMobile=null
@@ -45,20 +55,26 @@ var button2 = document.getElementById("MOBILE");
 const N=1;
 const traffic=[]
 
+
+
 let cars
 function generateCars(N){
     cars=[];
     for(let i=1;i<=N;i++){
-        cars.push(new Car(road.getLaneCenter(1),100,60,90,CARTYPE,9,isMobile,"#00FF00"));
+        cars.push(new Car(centerLane,100,60,90,CARTYPE,9,isMobile,"#00FF00"));
     }
     return cars;
 }
 
-function setup(){
-    cars=generateCars(N);
+function createTraffic(){
     for(let i =0;i<280*laneArray.length;i+=280){
         traffic.push(new Car(road.getLaneCenter(laneArray[i/280]),-i,60,90,"DUMMY",2))
     }
+}
+
+function setup(){
+    cars=generateCars(N);
+    createTraffic()
 }
 
 
@@ -86,20 +102,7 @@ function discard(){
     localStorage.removeItem("bestBrain");
 }
 
-function removeAllFromArray(array){
-    array.splice(0,array.length)
-}
 
-function splice(array,start,end){
-    array.splice(start,end)
-}
-
-function restartGame(){
-    removeAllFromArray(traffic)
-    racecar.x=getLaneCenter(1)
-    racecar.y=100
-    racecar.damaged=false
-}
 
 
 function animate(time){
@@ -156,7 +159,10 @@ function animate(time){
     carCtx.fillStyle='#444444'
     carCtx.fillRect(0,carCanvas.height,carCanvas.width,-50)
 
-
+    if(reloadCars){
+        createTraffic()
+        reloadCars=false
+    }
     requestAnimationFrame(animate);
 }
 
@@ -173,7 +179,6 @@ function say(text,x,y,size,time){
     }
     if(textSy**2>600){
         setup()
-
         stage='game'
         button2.parentNode.removeChild(button2);
         button1.parentNode.removeChild(button1);
