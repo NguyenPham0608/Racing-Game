@@ -67,7 +67,11 @@ function getRandomColor() {
             
 function getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
-  }
+}
+
+function getRoundRandomArbitrary(min, max) {
+    return Math.floor(Math.random() * (max - min) + min);
+}
 
   function getRandomRed(){
     const hue=340+Math.random()*90;

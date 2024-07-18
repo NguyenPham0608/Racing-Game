@@ -44,10 +44,11 @@ let CARTYPE="KEYS"
 let stage='intro'
 
 let randomLane=0
-let laneArray=[
-    0,2,1,2,0,1,2,0,0,2,1,0,2,1,0,1,2,2,1,0,2,0,0,0,0,0,1,2,2,1,2,2,1,0,2,1,0,0,1,2,2,0,0,0,2,
-    0,2,1,2,0,1,2,0,0,2,1,0,2,1,0,2,1,2,0,1,2,0,0,2,1,0,2,1,0,0,1,2,2,0,0,0,1,2,0,1,2,2,1,0
-]
+let laneArray=[]
+for(let i=0;i<200;i++){
+    laneArray.push(getRoundRandomArbitrary(0,laneCount))
+}
+
 
 var button1 = document.getElementById("PC");
 var button2 = document.getElementById("MOBILE");

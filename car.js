@@ -202,6 +202,11 @@
             if(this.exploded<1){
                 bam.play()
             }
+            if(this.exploded>100&&this.exploded<101){
+                removeAllFromArray(this.particlesArray)
+                removeAllFromArray(particlesList)
+
+            }
             if(this.exploded>250){
                 restart=true
                 
