@@ -111,3 +111,10 @@ function restartGame(){
     racecar.y=100
     racecar.damaged=false
 }
+
+function writeAt(x,y,text,ctx,font,color){
+    ctx.font=font
+    ctx.fillStyle=color
+    ctx.textAlign='center'
+    ctx.fillText(text,x,y,999)
+}

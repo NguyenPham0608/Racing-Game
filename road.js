@@ -35,6 +35,7 @@ class Road{
     }
 
     draw(ctx){
+
         ctx.lineWidth=5;
         ctx.strokeStyle="white";
 
@@ -61,5 +62,9 @@ class Road{
             ctx.lineTo(border[1].x,border[1].y);
             ctx.stroke();
         });
+
+        ctx.fillStyle='darkgray'
+        ctx.fillRect(0,0,carCanvas.width,100)
+        writeAt(carCanvas.width/2,70,"START",ctx,'bold 60px Verdana','white')
     }
 }
