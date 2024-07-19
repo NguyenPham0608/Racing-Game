@@ -15,9 +15,9 @@
         this.exploded=0
         this.turnAcel=0.03
         this.isMobile=mobile
-        if(this.controlType=="KEYS"){
-            this.engine=new Engine()
-        }
+        // if(this.controlType=="KEYS"){
+        //     this.engine=new Engine()
+        // }
 
         this.useBrain=this.controlType=="AI";
 
@@ -77,12 +77,12 @@
             }
         }
 
-        if(this.engine){
-            const percent=Math.abs(this.speed/this.maxSpeed)
-            this.engine.setVolume(percent)
-            this.engine.setPitch(percent/2)
+        // if(this.engine){
+        //     const percent=Math.abs(this.speed/this.maxSpeed)
+        //     this.engine.setVolume(percent)
+        //     this.engine.setPitch(percent/2)
 
-        }
+        // }
 
     }
 
