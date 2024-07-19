@@ -15,6 +15,9 @@
         this.exploded=0
         this.turnAcel=0.03
         this.isMobile=mobile
+        if(this.controlType=="KEYS"){
+            this.engine=new Engine()
+        }
 
         this.useBrain=this.controlType=="AI";
 
@@ -72,6 +75,13 @@
                     this.controls.reverse=outputs[3];
                 }
             }
+        }
+
+        if(this.engine){
+            const percent=Math.abs(this.speed/this.maxSpeed)
+            this.engine.setVolume(percent)
+            this.engine.setPitch(percent/2)
+
         }
 
     }
@@ -201,6 +211,7 @@
             }
             if(this.exploded<1){
                 bam.play()
+                this.speed=0
             }
             if(this.exploded>100&&this.exploded<101){
                 removeAllFromArray(this.particlesArray)

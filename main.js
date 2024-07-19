@@ -21,7 +21,7 @@ const carCtx = carCanvas.getContext("2d");
 const networkCtx = networkCanvas.getContext("2d");
 
 
-let laneCount=7
+let laneCount=4
 const road=new Road(carCanvas.width/2,carCanvas.width*0.9,laneCount);
 let centerLane=road.getLaneCenter(Math.ceil((laneCount-1)/2))
 

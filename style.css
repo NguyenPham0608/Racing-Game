@@ -86,8 +86,8 @@ button:hover{
     /* background:rgb(5, 130, 255); */
     border: 5px solid gray;
     /* background: linear-gradient(90deg, rgba(0,68,212,1) 0%, rgba(0,159,255,1) 46%, rgba(78,69,252,1) 100%); */
-    background: linear-gradient(90deg, rgba(10,0,177,1) 0%, rgb(3, 0, 157) 19%, rgba(0,53,142,1) 36%, rgba(0,196,252,1) 53%, rgb(0, 51, 255) 68%, rgba(0,0,198,1) 86%, rgba(0,212,255,1) 100%);
-
+    /* background: linear-gradient(90deg, rgba(10,0,177,1) 0%, rgb(3, 0, 157) 19%, rgba(0,53,142,1) 36%, rgba(0,196,252,1) 53%, rgb(0, 51, 255) 68%, rgba(0,0,198,1) 86%, rgba(0,212,255,1) 100%); */
+    background: linear-gradient(90deg, rgba(10,0,177,1) 0%, rgba(32,228,65,1) 50%, rgba(10,0,177,1) 100%);
 }
 
 #score{
