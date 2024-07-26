@@ -8,6 +8,9 @@
 
         this.speed=0;
         this.acceleration=0.2;
+        if(this.controlType=="DUMMY"){
+            this.acceleration=Math.random()+0.1
+        }
         this.maxSpeed=maxSpeed;
         this.friction=0.05;
         this.angle=0;
@@ -15,9 +18,9 @@
         this.exploded=0
         this.turnAcel=0.03
         this.isMobile=mobile
-        // if(this.controlType=="KEYS"){
-        //     this.engine=new Engine()
-        // }
+        if(this.controlType=="KEYS"){
+            this.engine=new Engine()
+        }
 
         this.useBrain=this.controlType=="AI";
 
@@ -51,9 +54,13 @@
             maskCtx.globalCompositeOperation="destination-atop";
             maskCtx.drawImage(this.img,0,0,this.width,this.height);
         }
+        if(this.controlType=="DUMMY"){
+            this.maxSpeed=getRandomArbitrary(2,9)
+        }
     }
 
     update(roadBorders,traffic){
+
 
         this.controls.update(2)
         if(!this.damaged){
@@ -77,12 +84,12 @@
             }
         }
 
-        // if(this.engine){
-        //     const percent=Math.abs(this.speed/this.maxSpeed)
-        //     this.engine.setVolume(percent)
-        //     this.engine.setPitch(percent/2)
+        if(this.engine){
+            const percent=Math.abs(this.speed/this.maxSpeed)
+            this.engine.setVolume(percent)
+            this.engine.setPitch(percent/2)
 
-        // }
+        }
 
     }
 
@@ -125,6 +132,15 @@
     }
 
     #move(){
+        if(this.controlType=="KEYS"){
+            if(speedBoost){
+                this.maxSpeed=15
+                this.acceleration=1
+            }else{
+                this.maxSpeed=9
+                this.acceleration=0.2
+            }
+        }
         if(mobile){
             this.turnAcel=this.controls.turnAcel
         }else{

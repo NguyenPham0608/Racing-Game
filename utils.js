@@ -47,22 +47,12 @@ function getRGBA(value){
     return "rgba("+R+","+G+","+B+","+alpha+")";
 }
 
-// function getRandomColor(){
-//     const hue=200+getRandomArbitrary(0,500)
-//     return "hsl("+hue+", 100%, 60%)";
-// }
+function getRandomColor(){
+    const hue=200+getRandomArbitrary(0,500)
+    return "hsl("+hue+", 100%, 60%)";
+}
 
-function getRandomColor() {
-    // Loop until a non-green color is generated
-    while (true) {
-      const hue = Math.floor(Math.random() * 360); // Generate random hue between 0 and 359
-      
-      // Check if hue is not in the green range (roughly between 120 and 300)
-      if (hue < 120 || hue > 300) {
-        return `hsl(${hue}, 100%, 50%)`; // Fixed lightness to 50% for medium brightness
-      }
-    }
-  }
+
 
             
 function getRandomArbitrary(min, max) {

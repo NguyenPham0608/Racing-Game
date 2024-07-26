@@ -12,7 +12,7 @@ output.innerHTML = score;
 const mobile=false
 let frame=0
 
-
+let speedBoost=false
 
 let restart=false
 let reloadCars=false
@@ -68,8 +68,14 @@ function generateCars(N){
 }
 
 function createTraffic(){
-    for(let i =0;i<280*laneArray.length;i+=280){
-        traffic.push(new Car(road.getLaneCenter(laneArray[i/280]),-i,60,90,"DUMMY",2))
+    if(isMobile){
+        for(let i =0;i<280*laneArray.length;i+=280){
+            traffic.push(new Car(road.getLaneCenter(laneArray[i/280]),-i,60,90,"DUMMY",2))
+        }
+    }else{
+        for(let i =0;i<200*laneArray.length;i+=200){
+            traffic.push(new Car(road.getLaneCenter(laneArray[i/200]),-i,60,90,"DUMMY",2))
+        }
     }
 }
 
@@ -201,6 +207,14 @@ function setDevice(mobile){
 window.addEventListener('keydown',function(e){
     if(e.key=="r"){
         window.location.reload()
+    }
+    if(e.key==" "){
+        speedBoost=true
+    }
+})
+window.addEventListener('keyup',function(e){
+    if(e.key==" "){
+        speedBoost=false
     }
 })
 
